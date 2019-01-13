@@ -1,0 +1,606 @@
+EESchema Schematic File Version 4
+LIBS:Control-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date "H.F. 2018-12-21"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Label 8700 1100 0    60   ~ 0
+1(Tx)
+Text Label 8700 1200 0    60   ~ 0
+0(Rx)
+Text Label 8700 1300 0    60   ~ 0
+Reset
+Text Label 8700 1500 0    60   ~ 0
+2
+Text Label 8700 1600 0    60   ~ 0
+3(**)
+Text Label 8700 1700 0    60   ~ 0
+4
+Text Label 8700 1800 0    60   ~ 0
+5(**)
+Text Label 8700 1900 0    60   ~ 0
+6(**)
+Text Label 8700 2000 0    60   ~ 0
+7
+Text Label 8700 2100 0    60   ~ 0
+8
+Text Label 8700 2200 0    60   ~ 0
+9(**)
+Text Label 8700 2300 0    60   ~ 0
+10(**/SS)
+Text Label 8700 2400 0    60   ~ 0
+11(**/MOSI)
+Text Label 8700 2500 0    60   ~ 0
+12(MISO)
+Text Label 10550 2500 0    60   ~ 0
+13(SCK)
+Text Label 10550 2200 0    60   ~ 0
+A0
+Text Label 10550 2100 0    60   ~ 0
+A1
+Text Label 10550 2000 0    60   ~ 0
+A2
+Text Label 10550 1900 0    60   ~ 0
+A3
+Text Label 10550 1800 0    60   ~ 0
+A4
+Text Label 10550 1700 0    60   ~ 0
+A5
+Text Label 10550 1600 0    60   ~ 0
+A6
+Text Label 10550 1500 0    60   ~ 0
+A7
+Text Label 10550 2300 0    60   ~ 0
+AREF
+Text Label 10550 1300 0    60   ~ 0
+Reset
+Text Notes 10800 1000 0    60   ~ 0
+Holes
+Text Notes 8500 575  0    60   ~ 0
+Shield for Arduino Nano
+Text Label 10250 950  1    60   ~ 0
+Vin
+Wire Notes Line
+	8475 650  9675 650 
+Wire Notes Line
+	9675 650  9675 475 
+$Comp
+L Connector_Generic:Conn_01x01 P3
+U 1 1 56D73ADD
+P 10800 650
+F 0 "P3" V 10900 650 50  0000 C CNN
+F 1 "CONN_01X01" V 10900 650 50  0001 C CNN
+F 2 "Socket_Arduino_Nano:1pin_Nano" H 10800 650 50  0001 C CNN
+F 3 "" H 10800 650 50  0000 C CNN
+	1    10800 650 
+	0    -1   -1   0   
+$EndComp
+NoConn ~ 10800 850 
+$Comp
+L Connector_Generic:Conn_01x01 P4
+U 1 1 56D73D86
+P 10900 650
+F 0 "P4" V 11000 650 50  0000 C CNN
+F 1 "CONN_01X01" V 11000 650 50  0001 C CNN
+F 2 "Socket_Arduino_Nano:1pin_Nano" H 10900 650 50  0001 C CNN
+F 3 "" H 10900 650 50  0000 C CNN
+	1    10900 650 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x01 P5
+U 1 1 56D73DAE
+P 11000 650
+F 0 "P5" V 11100 650 50  0000 C CNN
+F 1 "CONN_01X01" V 11100 650 50  0001 C CNN
+F 2 "Socket_Arduino_Nano:1pin_Nano" H 11000 650 50  0001 C CNN
+F 3 "" H 11000 650 50  0000 C CNN
+	1    11000 650 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x01 P6
+U 1 1 56D73DD9
+P 11100 650
+F 0 "P6" V 11200 650 50  0000 C CNN
+F 1 "CONN_01X01" V 11200 650 50  0001 C CNN
+F 2 "Socket_Arduino_Nano:1pin_Nano" H 11100 650 50  0001 C CNN
+F 3 "" H 11100 650 50  0000 C CNN
+	1    11100 650 
+	0    -1   -1   0   
+$EndComp
+NoConn ~ 10900 850 
+NoConn ~ 11000 850 
+NoConn ~ 11100 850 
+$Comp
+L Connector_Generic:Conn_01x15 P1
+U 1 1 56D73FAC
+P 9550 1800
+F 0 "P1" H 9550 2600 50  0000 C CNN
+F 1 "Digital" V 9650 1800 50  0000 C CNN
+F 2 "Socket_Arduino_Nano:Socket_Strip_Arduino_1x15" H 9550 1800 50  0001 C CNN
+F 3 "" H 9550 1800 50  0000 C CNN
+	1    9550 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x15 P2
+U 1 1 56D740C7
+P 9950 1800
+F 0 "P2" H 9950 2600 50  0000 C CNN
+F 1 "Analog" V 10050 1800 50  0000 C CNN
+F 2 "Socket_Arduino_Nano:Socket_Strip_Arduino_1x15" H 9950 1800 50  0001 C CNN
+F 3 "" H 9950 1800 50  0000 C CNN
+	1    9950 1800
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR06
+U 1 1 56D7422C
+P 9250 2600
+F 0 "#PWR06" H 9250 2350 50  0001 C CNN
+F 1 "GND" H 9250 2450 50  0000 C CNN
+F 2 "" H 9250 2600 50  0000 C CNN
+F 3 "" H 9250 2600 50  0000 C CNN
+	1    9250 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 1400 9250 1400
+Wire Wire Line
+	9250 1400 9250 2600
+Wire Wire Line
+	9350 1100 8700 1100
+Wire Wire Line
+	8700 1200 9350 1200
+Wire Wire Line
+	9350 1300 8700 1300
+Wire Wire Line
+	8700 1500 9350 1500
+Wire Wire Line
+	9350 1600 8700 1600
+Wire Wire Line
+	8700 1700 9350 1700
+Wire Wire Line
+	9350 1800 8700 1800
+Wire Wire Line
+	8700 1900 9350 1900
+Wire Wire Line
+	9350 2000 8700 2000
+Wire Wire Line
+	8700 2100 9350 2100
+Wire Wire Line
+	9350 2200 8700 2200
+Wire Wire Line
+	8700 2300 9350 2300
+Wire Wire Line
+	9350 2400 8700 2400
+Wire Wire Line
+	8700 2500 9350 2500
+$Comp
+L power:GND #PWR07
+U 1 1 56D746ED
+P 10250 2600
+F 0 "#PWR07" H 10250 2350 50  0001 C CNN
+F 1 "GND" H 10250 2450 50  0000 C CNN
+F 2 "" H 10250 2600 50  0000 C CNN
+F 3 "" H 10250 2600 50  0000 C CNN
+	1    10250 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10250 2600 10250 1200
+Wire Wire Line
+	10250 1200 10150 1200
+Wire Wire Line
+	10150 1100 10250 1100
+Wire Wire Line
+	10250 1100 10250 950 
+$Comp
+L power:+5V #PWR08
+U 1 1 56D747E8
+P 10350 950
+F 0 "#PWR08" H 10350 800 50  0001 C CNN
+F 1 "+5V" V 10350 1150 28  0000 C CNN
+F 2 "" H 10350 950 50  0000 C CNN
+F 3 "" H 10350 950 50  0000 C CNN
+	1    10350 950 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10350 950  10350 1400
+Wire Wire Line
+	10350 1400 10150 1400
+$Comp
+L power:+3V3 #PWR09
+U 1 1 56D74854
+P 10450 950
+F 0 "#PWR09" H 10450 800 50  0001 C CNN
+F 1 "+3.3V" V 10450 1150 28  0000 C CNN
+F 2 "" H 10450 950 50  0000 C CNN
+F 3 "" H 10450 950 50  0000 C CNN
+	1    10450 950 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10450 950  10450 2400
+Wire Wire Line
+	10450 2400 10150 2400
+Wire Wire Line
+	10550 1300 10150 1300
+Wire Wire Line
+	10150 1500 10550 1500
+Wire Wire Line
+	10550 1600 10150 1600
+Wire Wire Line
+	10550 1700 10150 1700
+Wire Wire Line
+	10150 1800 10550 1800
+Wire Wire Line
+	10550 1900 10150 1900
+Wire Wire Line
+	10550 2000 10150 2000
+Wire Wire Line
+	10150 2100 10550 2100
+Wire Wire Line
+	10550 2200 10150 2200
+Wire Wire Line
+	10550 2300 10150 2300
+Wire Wire Line
+	10150 2500 10550 2500
+Wire Notes Line
+	11200 1050 10650 1050
+Wire Notes Line
+	10650 1050 10650 500 
+Wire Notes Line
+	11200 2850 8450 2850
+Wire Notes Line
+	8450 2850 8450 500 
+Text Notes 9650 1100 0    60   ~ 0
+1
+$Comp
+L MCU_Module:Arduino_Nano_v2.x A1
+U 1 1 5C1CA5D2
+P 3100 3750
+F 0 "A1" H 3100 2664 50  0000 C CNN
+F 1 "Arduino_Nano_v2.x" H 3100 2573 50  0000 C CNN
+F 2 "Module:Arduino_Nano" H 3250 2800 50  0001 L CNN
+F 3 "https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf" H 3100 2750 50  0001 C CNN
+	1    3100 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Relay:FINDER-32.21-x300 K1
+U 1 1 5C1CAFBF
+P 4800 3200
+F 0 "K1" H 5230 3246 50  0000 L CNN
+F 1 "FINDER-32.21-x300" H 5230 3155 50  0000 L CNN
+F 2 "Relay_THT:Relay_SPST_Finder_32.21-x300" H 6070 3170 50  0001 C CNN
+F 3 "http://gfinder.findernet.com/assets/Series/355/S32EN.pdf" H 4800 3200 50  0001 C CNN
+	1    4800 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Relay:FINDER-32.21-x300 K2
+U 1 1 5C1CB10F
+P 4800 4250
+F 0 "K2" H 5230 4296 50  0000 L CNN
+F 1 "FINDER-32.21-x300" H 5230 4205 50  0000 L CNN
+F 2 "Relay_THT:Relay_SPST_Finder_32.21-x300" H 6070 4220 50  0001 C CNN
+F 3 "http://gfinder.findernet.com/assets/Series/355/S32EN.pdf" H 4800 4250 50  0001 C CNN
+	1    4800 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3200 4750 3700 4750
+Wire Wire Line
+	4600 4750 4600 4550
+Wire Wire Line
+	4600 3500 4100 3500
+Wire Wire Line
+	4100 3500 4100 4750
+Connection ~ 4100 4750
+Wire Wire Line
+	4100 4750 4600 4750
+Wire Wire Line
+	4600 2900 4600 2150
+Wire Wire Line
+	4600 2150 2450 2150
+Wire Wire Line
+	2450 2150 2450 3350
+Wire Wire Line
+	2450 3350 2600 3350
+Wire Wire Line
+	4600 3950 4600 3750
+Wire Wire Line
+	4600 3750 3850 3750
+Wire Wire Line
+	3850 3750 3850 2500
+Wire Wire Line
+	3850 2500 2550 2500
+$Comp
+L Analog_Switch:DG308AxY U1
+U 1 1 5C1D0662
+P 1400 3150
+F 0 "U1" H 1400 3417 50  0000 C CNN
+F 1 "ButtonA" H 1400 3326 50  0000 C CNN
+F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 1400 3050 50  0001 C CNN
+F 3 "http://pdf.datasheetcatalog.com/datasheets/70/494502_DS.pdf" H 1400 3150 50  0001 C CNN
+	1    1400 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Analog_Switch:DG308AxY U2
+U 1 1 5C1D06E8
+P 1400 3900
+F 0 "U2" H 1400 4167 50  0000 C CNN
+F 1 "ButtonB" H 1400 4076 50  0000 C CNN
+F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 1400 3800 50  0001 C CNN
+F 3 "http://pdf.datasheetcatalog.com/datasheets/70/494502_DS.pdf" H 1400 3900 50  0001 C CNN
+	1    1400 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 3150 1900 3150
+Wire Wire Line
+	2300 3150 2300 3550
+Wire Wire Line
+	1700 3900 1900 3900
+$Comp
+L Device:LED LEDB
+U 1 1 5C1D5673
+P 1550 5000
+F 0 "LEDB" H 1541 5216 50  0000 C CNN
+F 1 "LED" H 1541 5125 50  0000 C CNN
+F 2 "" H 1550 5000 50  0001 C CNN
+F 3 "~" H 1550 5000 50  0001 C CNN
+	1    1550 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED LEDA
+U 1 1 5C1D6CFD
+P 1550 4450
+F 0 "LEDA" H 1541 4666 50  0000 C CNN
+F 1 "LED" H 1541 4575 50  0000 C CNN
+F 2 "" H 1550 4450 50  0001 C CNN
+F 3 "~" H 1550 4450 50  0001 C CNN
+	1    1550 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 4450 2400 4450
+Wire Wire Line
+	1700 5000 2450 5000
+Wire Wire Line
+	1400 4450 1100 4450
+Wire Wire Line
+	1100 4450 1100 4750
+Wire Wire Line
+	1100 5000 1400 5000
+Wire Wire Line
+	1100 4750 950  4750
+Wire Wire Line
+	950  4750 950  5300
+Wire Wire Line
+	950  5300 3100 5300
+Wire Wire Line
+	3100 5300 3100 4750
+Connection ~ 1100 4750
+Wire Wire Line
+	1100 4750 1100 5000
+$Comp
+L Motor:Motor_DC M1
+U 1 1 5C1E450C
+P 6300 3150
+F 0 "M1" H 6458 3146 50  0000 L CNN
+F 1 "Motor_DC" H 6458 3055 50  0000 L CNN
+F 2 "" H 6300 3060 50  0001 C CNN
+F 3 "~" H 6300 3060 50  0001 C CNN
+	1    6300 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Motor:Motor_DC M2
+U 1 1 5C1E45F3
+P 6300 4200
+F 0 "M2" H 6458 4196 50  0000 L CNN
+F 1 "Motor_DC" H 6458 4105 50  0000 L CNN
+F 2 "" H 6300 4110 50  0001 C CNN
+F 3 "~" H 6300 4110 50  0001 C CNN
+	1    6300 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 3500 6050 3500
+Wire Wire Line
+	6050 3500 6050 2950
+Wire Wire Line
+	6050 2950 6300 2950
+Wire Wire Line
+	5000 4550 6100 4550
+Wire Wire Line
+	6100 4550 6100 4000
+Wire Wire Line
+	6100 4000 6300 4000
+$Comp
+L power:+12V #PWR04
+U 1 1 5C1EBF68
+P 6300 1750
+F 0 "#PWR04" H 6300 1600 50  0001 C CNN
+F 1 "+12V" H 6315 1923 50  0000 C CNN
+F 2 "" H 6300 1750 50  0001 C CNN
+F 3 "" H 6300 1750 50  0001 C CNN
+	1    6300 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR05
+U 1 1 5C1EC238
+P 6650 1700
+F 0 "#PWR05" H 6650 1450 50  0001 C CNN
+F 1 "Earth" H 6650 1550 50  0001 C CNN
+F 2 "" H 6650 1700 50  0001 C CNN
+F 3 "~" H 6650 1700 50  0001 C CNN
+	1    6650 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 3450 6300 3500
+Wire Wire Line
+	6300 3500 6850 3500
+Wire Wire Line
+	6850 3500 6850 1700
+Wire Wire Line
+	6850 1700 6650 1700
+Wire Wire Line
+	6300 4500 6850 4500
+Wire Wire Line
+	6850 4500 6850 3500
+Connection ~ 6850 3500
+Wire Wire Line
+	5100 2900 5100 1750
+Wire Wire Line
+	5100 1750 5650 1750
+Wire Wire Line
+	5650 1750 5650 3950
+Wire Wire Line
+	5650 3950 5100 3950
+Connection ~ 5650 1750
+Wire Wire Line
+	5650 1750 6300 1750
+$Comp
+L Regulator_Switching:R-781.5-0.5 U3
+U 1 1 5C1F97D2
+P 3700 1450
+F 0 "U3" H 3700 1692 50  0000 C CNN
+F 1 "R-781.5-0.5" H 3700 1601 50  0000 C CNN
+F 2 "Converter_DCDC:Converter_DCDC_RECOM_R-78E-0.5_THT" H 3750 1200 50  0001 L CIN
+F 3 "https://www.recom-power.com/pdf/Innoline/R-78xx-0.5.pdf" H 3700 1450 50  0001 C CNN
+	1    3700 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3400 1450 3400 1050
+Wire Wire Line
+	3400 1050 5650 1050
+Wire Wire Line
+	5650 1050 5650 1750
+Wire Wire Line
+	3700 1750 2950 1750
+Wire Wire Line
+	2950 1750 2950 800 
+Wire Wire Line
+	2950 800  6650 800 
+Wire Wire Line
+	6650 800  6650 1700
+Connection ~ 6650 1700
+Wire Wire Line
+	4000 1450 4000 1950
+Wire Wire Line
+	4000 1950 3000 1950
+Wire Wire Line
+	3000 1950 3000 2750
+Wire Wire Line
+	3700 1750 3700 4750
+Connection ~ 3700 1750
+Connection ~ 3700 4750
+Wire Wire Line
+	3700 4750 4100 4750
+$Comp
+L power:+5V #PWR01
+U 1 1 5C211415
+P 1100 3150
+F 0 "#PWR01" H 1100 3000 50  0001 C CNN
+F 1 "+5V" H 1115 3323 50  0000 C CNN
+F 2 "" H 1100 3150 50  0001 C CNN
+F 3 "" H 1100 3150 50  0001 C CNN
+	1    1100 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR02
+U 1 1 5C2115E7
+P 1100 3900
+F 0 "#PWR02" H 1100 3750 50  0001 C CNN
+F 1 "+5V" H 1115 4073 50  0000 C CNN
+F 2 "" H 1100 3900 50  0001 C CNN
+F 3 "" H 1100 3900 50  0001 C CNN
+	1    1100 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5C211D00
+P 1900 3300
+F 0 "R1" H 1970 3346 50  0000 L CNN
+F 1 "4.7k" H 1970 3255 50  0000 L CNN
+F 2 "" V 1830 3300 50  0001 C CNN
+F 3 "~" H 1900 3300 50  0001 C CNN
+	1    1900 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5C212007
+P 1900 3750
+F 0 "R2" H 1970 3796 50  0000 L CNN
+F 1 "4.7k" H 1970 3705 50  0000 L CNN
+F 2 "" V 1830 3750 50  0001 C CNN
+F 3 "~" H 1900 3750 50  0001 C CNN
+	1    1900 3750
+	1    0    0    -1  
+$EndComp
+Connection ~ 1900 3150
+Wire Wire Line
+	1900 3150 2300 3150
+Connection ~ 1900 3900
+Wire Wire Line
+	1900 3900 2300 3900
+$Comp
+L power:Earth #PWR03
+U 1 1 5C222729
+P 1750 3500
+F 0 "#PWR03" H 1750 3250 50  0001 C CNN
+F 1 "Earth" H 1750 3350 50  0001 C CNN
+F 2 "" H 1750 3500 50  0001 C CNN
+F 3 "~" H 1750 3500 50  0001 C CNN
+	1    1750 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1750 3500 1900 3500
+Wire Wire Line
+	1900 3500 1900 3450
+Wire Wire Line
+	1900 3600 1900 3500
+Connection ~ 1900 3500
+Wire Wire Line
+	2600 4250 2450 4250
+Wire Wire Line
+	2300 3900 2300 3850
+Wire Wire Line
+	2300 3850 2600 3850
+Wire Wire Line
+	2450 4250 2450 5000
+Wire Wire Line
+	2600 3450 2400 3450
+Wire Wire Line
+	2400 3450 2400 4450
+Wire Wire Line
+	2550 2500 2550 3650
+Wire Wire Line
+	2550 3650 2600 3650
+Wire Wire Line
+	2300 3550 2600 3550
+$EndSCHEMATC
