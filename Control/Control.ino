@@ -1,7 +1,7 @@
 /* Control program for the olfacotry chip
  *  Version  |  Commit 
  *    0.1    | First version
- *    
+ *    0.2    | Updata time control
  */
 // Relay 1, always close, dose
 const int relay1 = 2;
@@ -20,6 +20,9 @@ int last_butA = LOW;
 int now_butB = LOW;
 int last_butB = LOW;
 unsigned long last;
+int duration = 5000; // 5000ms
+int rest = 30000;
+int times= 3 ; // repeat times
 
 void setup() {
   // put your setup code here, to run once:
@@ -67,10 +70,11 @@ void loop() {
     now_butB = digitalRead(buttonB);
     //if(now_butB - last_butB == 1){
     if( now_butB == HIGH && last_butB == LOW){
+        for(int i = 0; i< times; i++){
         // rest 4s
         last = millis();
         stop_stimulate();
-        while(millis() - last < 4000){
+        while(millis() - last < rest){
             now_butB = digitalRead(buttonB);
             if(now_butB == LOW){
               break;
@@ -80,7 +84,7 @@ void loop() {
         digitalWrite(ledB, LOW);
         last = millis();
         start_stimulate();
-        while(millis() - last < 1000){
+        while(millis() - last < duration){
             now_butB = digitalRead(buttonB);
             if(now_butB == LOW){
               break;
@@ -90,6 +94,7 @@ void loop() {
         digitalWrite(ledB, HIGH);
         //last_butB = ; // reset but1 state to LOW
       }
+    }
     last_butB = now_butB;
    }
    last_butB = LOW;

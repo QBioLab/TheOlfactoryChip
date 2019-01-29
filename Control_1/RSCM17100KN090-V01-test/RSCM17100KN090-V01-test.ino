@@ -1,0 +1,46 @@
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//此测试程序归达华电子所有，盗用必究//
+//Project：RSCM17100KN090-V01-test//
+//Platform:Arduino MEGA2560//
+//Design:达华电子沈工//
+//Time:20180426//
+//本例程实现ADC读取气压值从串口打印结果的功能
+/* 引脚接线如下：
+MEGA 2560        RSCM17100KN090
+   5V                   5V
+   A0                  Vout
+  GND                  GND
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+unsigned int sensorValue  = 0;   
+float voltageValue  = 0; 
+unsigned int pressureValue  = 0;  
+unsigned int a  = 0; 
+
+void setup() 
+{
+  Serial.begin(9600);   
+}
+
+void loop() 
+{
+  sensorValue = analogRead(A0);
+  voltageValue = sensorValue *(5000.0 / 1023.0);
+  if(voltageValue <= 4500) { a = 4500 - voltageValue; }
+  pressureValue = a * 0.0225;
+  Serial.print("Pressure Value:");
+  if(pressureValue > 0){ sensorValue = 0; a = 0; voltageValue = 0; Serial.print("-"); }
+  Serial.print(pressureValue);
+  Serial.println("kpa");
+  //delay(1000);
+}
+
+
+
+
+
+
+
+
