@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:control_1-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -284,25 +285,25 @@ Connection ~ 6500 4250
 Text GLabel 6500 4200 1    50   Output ~ 0
 D22
 Text GLabel 7750 4350 3    50   Input ~ 0
-D32
-Text GLabel 8400 4350 3    50   Input ~ 0
 D40
+Text GLabel 8400 4350 3    50   Input ~ 0
+D48
 Text GLabel 7200 4200 1    50   Output ~ 0
-D30
-Text GLabel 7900 4200 1    50   Output ~ 0
 D38
-Text GLabel 7200 5000 3    50   Input ~ 0
+Text GLabel 7900 4200 1    50   Output ~ 0
 D46
+Text GLabel 7200 5000 3    50   Input ~ 0
+D30
 Text GLabel 7900 5000 3    50   Input ~ 0
 D52
 Text GLabel 7750 5100 3    50   Input ~ 0
-D48
+D32
 Text GLabel 8400 5100 3    50   Input ~ 0
 D50
 Text GLabel 7050 5900 3    50   Input ~ 0
 D26
 Text GLabel 6550 5750 1    50   Output ~ 0
-D268
+D28
 Wire Wire Line
 	6550 5800 6650 5800
 Text GLabel 7750 5900 3    50   Input ~ 0
