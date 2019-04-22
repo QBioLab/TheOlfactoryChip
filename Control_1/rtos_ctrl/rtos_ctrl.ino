@@ -1,4 +1,5 @@
 #include <Arduino_FreeRTOS.h>
+#include <PID_v1.h>
 
 // define two tasks for Blink & AnalogRead
 void TaskBlink(      void *pvParameters );
@@ -25,6 +26,7 @@ unsigned int sensorValue  = 0;
 float voltageValue  = 0;
 unsigned int pressureValue  = 0;
 unsigned int a  = 0;
+int set_pressure = 0;
 
 // Button and LED
 #define hold1     22

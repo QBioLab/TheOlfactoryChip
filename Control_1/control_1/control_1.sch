@@ -631,4 +631,6 @@ Wire Wire Line
 	550  850  5150 850 
 Wire Wire Line
 	5150 850  5150 1600
+Text Notes 8350 950  0    50   ~ 0
+D24 connect to #0
 $EndSCHEMATC
