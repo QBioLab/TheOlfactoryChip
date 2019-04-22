@@ -1,8 +1,6 @@
 #include <Arduino_FreeRTOS.h>
 #include <PID_v1.h>
 
-// https://playground.arduino.cc/Code/PIDLibaryBasicExample/
-
 // define two tasks for Blink & AnalogRead
 void TaskBlink(      void *pvParameters );
 void TaskMessage( void *pvParameters );
@@ -28,8 +26,7 @@ unsigned int sensorValue  = 0;
 float voltageValue  = 0;
 unsigned int pressureValue  = 0;
 unsigned int a  = 0;
-int set_pressure = 60;
-int output = 0;
+int set_pressure = 0;
 
 // Button and LED
 #define hold1     22
@@ -213,12 +210,11 @@ void TaskMessage(void *pvParameters)  // This is a task.
       a = 0;
       voltageValue = 0;
     }
-    Serial.print(sensorValue);
     Serial.print("Pressure: -");
-    Serial.println(pressureValue);
-    //Serial.println("kPa");
-    //Serial.print("PWM Duty:  ");
-    //Serial.println(motor_pwm);
+    Serial.print(pressureValue);
+    Serial.println("kPa");
+    Serial.print("PWM Duty:  ");
+    Serial.println(motor_pwm);
     vTaskDelay(1);  // one tick delay (15ms) in between reads for stability
   }
 }
