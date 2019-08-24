@@ -1,7 +1,17 @@
 #include <Arduino_FreeRTOS.h>
-#include <PID_v1.h>
+//#include <PID_v1.h>
 
 // https://playground.arduino.cc/Code/PIDLibaryBasicExample/
+
+/***********************************************************************
+ *  | Version | Commit
+ *  | 190824  | disable all button led for stabilizating pwm voltage
+ * 
+ * 
+ * Todo:
+ * 1. 短按序列刺激button起始时，会引发继电器开启？？？
+ * 
+ */
 
 // define two tasks for Blink & AnalogRead
 void TaskBlink(      void *pvParameters );
@@ -15,6 +25,8 @@ void channelCheck();
 unsigned int rest_time = 30000; // 30s
 unsigned int action_time = 5000; // 5000ms
 unsigned int cycle = 3;
+ /* Block for 1ms. */
+ const TickType_t valveDelay = 100 / portTICK_PERIOD_MS;
 
 // relay
 #define relay1  29
@@ -53,6 +65,10 @@ int output = 0;
 // Brushless motor
 #define motor   2
 int motor_pwm = 0;
+int isled = 0;
+
+
+
 
 void setup() {
   // initialize serial communication at 9600 bits per second:
@@ -120,24 +136,24 @@ void TaskStimulate(void *pvParameters)
   {
     // When button holds is relased, control stimulion by hand
     channelCheck();
-    digitalWrite(holds_led, LOW);
+    if(isled) digitalWrite(holds_led, LOW);
     while ( digitalRead(holds) == LOW) {
       channelCheck();
       now_pushs = digitalRead(pushs);
       if (last_pushs != now_pushs) {
         if (now_pushs == HIGH) { // begin stimulation
-          digitalWrite(pushs_led, HIGH);
+          if(isled) digitalWrite(pushs_led, HIGH);
           startStimulate();
         } else { // stop stimulation
           stopStimulate();
-          digitalWrite( pushs_led, LOW);
+          if(isled) digitalWrite( pushs_led, LOW);
         }
         last_pushs = now_pushs;
       }
     }
 
     // When button holds is pressed, run automatical program
-    digitalWrite(holds_led, HIGH);
+    if(isled) digitalWrite(holds_led, HIGH);
     while ( digitalRead(holds) == HIGH ) {
       channelCheck();
       now_holds = digitalRead(holds);
@@ -155,7 +171,7 @@ void TaskStimulate(void *pvParameters)
             }
           }
           // action 5s
-          digitalWrite(holds, LOW);
+          if(isled) digitalWrite(holds_led, LOW);
           last = millis();
           startStimulate();
           while (millis() - last < action_time) {
@@ -165,7 +181,7 @@ void TaskStimulate(void *pvParameters)
             }
           }
           stopStimulate();
-          digitalWrite(holds_led, HIGH);
+          if(isled) digitalWrite(holds_led, HIGH);
           //last_butB = ; // reset but1 state to LOW
         }
       }
@@ -173,7 +189,7 @@ void TaskStimulate(void *pvParameters)
       last_holds = now_holds;
     }
     last_holds = LOW;
-    digitalWrite(holds, LOW);
+    if(isled) digitalWrite(holds, LOW);
   }
 }
 
@@ -187,10 +203,10 @@ void TaskBlink(void *pvParameters)  // This is a task.
 
   for (;;) // A Task shall never return or exit.
   {
-    digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
+    if(isled) digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
     //digitalWrite(hold2_led, HIGH);
     vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
-    digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
+    if(isled) digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
     //digitalWrite(hold2_led, LOW);
     vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
   }
@@ -215,8 +231,8 @@ void TaskMessage(void *pvParameters)  // This is a task.
     }
     Serial.print(sensorValue);
     Serial.print("Pressure: -");
-    Serial.println(pressureValue);
-    //Serial.println("kPa");
+    Serial.print(pressureValue);
+    Serial.println("kPa");
     //Serial.print("PWM Duty:  ");
     //Serial.println(motor_pwm);
     vTaskDelay(1);  // one tick delay (15ms) in between reads for stability
@@ -245,7 +261,7 @@ void TaskVacuumCtrl(void *pvParameters)
     while (now_pushu)
     {
       now_pushu = digitalRead(pushu);
-      digitalWrite(pushu_led, HIGH);
+      if(isled) digitalWrite(pushu_led, HIGH);
       if (last_pushu == LOW && (millis() - last < 1000)) {
         if ((motor_pwm) < 255 && (motor_pwm > 120)) {
           motor_pwm ++;
@@ -275,14 +291,14 @@ void TaskVacuumCtrl(void *pvParameters)
       }
       last_pushu = now_pushu;
     }
-    digitalWrite(pushu_led, LOW);
+    if(isled) digitalWrite(pushu_led, LOW);
     last_pushu = LOW;
 
     now_pushd = digitalRead(pushd);
     while (now_pushd)
     {
       now_pushd = digitalRead(pushd);
-      digitalWrite(pushd_led, HIGH);
+      if(isled) digitalWrite(pushd_led, HIGH);
       if (last_pushd == LOW && (millis() - last < 1000)) {
         if (motor_pwm > 120) {
           motor_pwm --;
@@ -306,7 +322,7 @@ void TaskVacuumCtrl(void *pvParameters)
       }
       last_pushd = now_pushd;
     }
-    digitalWrite(pushd_led, LOW);
+    if(isled) digitalWrite(pushd_led, LOW);
     last_pushd = LOW;
   }
 }
@@ -325,27 +341,30 @@ void startStimulate()
   if (digitalRead(hold1))
   {
     digitalWrite(relay4, HIGH);
-    digitalWrite(hold1_led, HIGH);
+    if(isled) digitalWrite(hold1_led, HIGH);
   } else {
     digitalWrite(relay4, LOW);
-    digitalWrite(hold1_led, LOW);
+    if(isled) digitalWrite(hold1_led, LOW);
   }
 
-  if (digitalRead(hold2))
+  if (digitalRead(hold2)) // If the Button HOLD2 is pressed and holded
   {
     digitalWrite(relay3, HIGH);
-    digitalWrite(hold2_led, HIGH);
+    if(isled) digitalWrite(hold2_led, HIGH);
   } else {
     digitalWrite(relay3, LOW);
-    digitalWrite(hold2_led, LOW);
+    if(isled) digitalWrite(hold2_led, LOW);
   }
-  if (digitalRead(hold3))
+  if (digitalRead(hold3)) // This channel use to control valve
   {
+    if(isled) digitalWrite(hold3_led, HIGH);
+    digitalWrite(relay2, HIGH);
+    vTaskDelay(valveDelay);
     digitalWrite(relay1, HIGH);
-    digitalWrite(hold3_led, HIGH);
   } else {
+    if(isled) digitalWrite(hold3_led, LOW);
     digitalWrite(relay1, LOW);
-    digitalWrite(hold3_led, LOW);
+    digitalWrite(relay2, LOW);
   }
 }
 
@@ -353,22 +372,22 @@ void channelCheck()
 {
   if (digitalRead(hold1))
   {
-    digitalWrite(hold1_led, HIGH);
+    if(isled) digitalWrite(hold1_led, HIGH);
   } else {
-    digitalWrite(hold1_led, LOW);
+    if(isled) digitalWrite(hold1_led, LOW);
   }
 
   if (digitalRead(hold2))
   {
-    digitalWrite(hold2_led, HIGH);
+    if(isled) digitalWrite(hold2_led, HIGH);
   } else {
-    digitalWrite(hold2_led, LOW);
+    if(isled) digitalWrite(hold2_led, LOW);
   }
   if (digitalRead(hold3))
   {
-    digitalWrite(hold3_led, HIGH);
+    if(isled) digitalWrite(hold3_led, HIGH);
   } else {
-    digitalWrite(hold3_led, LOW);
+    if(isled) digitalWrite(hold3_led, LOW);
   }
 }
 
