@@ -434,4 +434,7 @@ void HardwareInit()
 
   pinMode(motor, OUTPUT);
   analogWrite(motor, 100);
+
+  // Turn on build-in pull-up resistors
+  //PORTC = PORTC | B00111111;
 }
